@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `tienda` /*!40100 DEFAULT CHARACTER SET utf8 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `tienda`;
 -- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
 -- Host: localhost    Database: tienda
@@ -30,7 +28,7 @@ CREATE TABLE `clientes` (
   `apellidos` char(60) NOT NULL,
   `direccion` char(60) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,7 +37,7 @@ CREATE TABLE `clientes` (
 
 LOCK TABLES `clientes` WRITE;
 /*!40000 ALTER TABLE `clientes` DISABLE KEYS */;
-INSERT INTO `clientes` VALUES (1,'Jaider','Quintero','Km 1'),(2,'Sandy','Romero','Cll 24');
+INSERT INTO `clientes` VALUES (1,'Jaider','Quintero','Km 1'),(2,'Sandy','Romero','Cll 24'),(3,'Junior','Barrera','Cll 17'),(4,'Felipe','Aguirre','Kra 18'),(5,'Cristian','Zapata','Cll 19'),(6,'Juan','Pinto','Cll 27'),(7,'Jorge','Acosta','Cll 33'),(8,'Kevin','Delgado','Cll 15'),(9,'Orlando','Duque','Kra 15'),(10,'Diego','Orozco','Cll 24');
 /*!40000 ALTER TABLE `clientes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -57,7 +55,7 @@ CREATE TABLE `productos` (
   `precioVenta` decimal(10,0) NOT NULL,
   `cantidad` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -66,6 +64,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
+INSERT INTO `productos` VALUES (1,'oso',90000,120000,1),(2,'jirafa',70000,80000,2),(3,'gato',60000,70000,1),(4,'tiburon',25000,35000,1),(5,'leon',50000,65000,1),(6,'tigre',35000,50000,1),(7,'perro',30000,40000,1),(8,'estrella',10000,15000,1),(9,'ave',20000,25000,1),(10,'elefante',15000,20000,1);
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +82,7 @@ CREATE TABLE `proveedores` (
   `telefono` char(120) NOT NULL,
   `correo` char(120) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,6 +91,7 @@ CREATE TABLE `proveedores` (
 
 LOCK TABLES `proveedores` WRITE;
 /*!40000 ALTER TABLE `proveedores` DISABLE KEYS */;
+INSERT INTO `proveedores` VALUES (1,'wuijian','China','111222','wui@gmail.com'),(2,'Hangzhou','China','333444','han@gmail.com'),(3,'Faespa','Mexico','555444','faespa@gmail.com'),(4,'Puli','Mexico','333555','pulimex@gmailcom'),(5,'Qingdao','China','333777','Qingdao@gmail.com'),(6,'Algodon Y Moda LTDA','Colombia','888999','AyMod@gmail.com'),(7,'Algodoneros Vichada S A S','Colombia','444000','algov@gmail.com'),(8,'Lemur 700 S A','Colombia','777888','lemur@gmail.com'),(9,'Doricolor Indulit S A S','Colombia','333999','dori@gmail.com'),(10,'Fibrandina S A S','Colombia','222111','fibraa@gmail.com');
 /*!40000 ALTER TABLE `proveedores` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -119,6 +119,7 @@ CREATE TABLE `proveedores_has_productos` (
 
 LOCK TABLES `proveedores_has_productos` WRITE;
 /*!40000 ALTER TABLE `proveedores_has_productos` DISABLE KEYS */;
+INSERT INTO `proveedores_has_productos` VALUES (1,1),(2,2),(3,3),(4,4),(5,5),(6,6),(7,7),(8,8),(9,9),(10,10);
 /*!40000 ALTER TABLE `proveedores_has_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +137,7 @@ CREATE TABLE `telefonos` (
   PRIMARY KEY (`id`),
   KEY `fk_telefonos_clientes_idx` (`clientes_id`),
   CONSTRAINT `fk_telefonos_clientes` FOREIGN KEY (`clientes_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +146,7 @@ CREATE TABLE `telefonos` (
 
 LOCK TABLES `telefonos` WRITE;
 /*!40000 ALTER TABLE `telefonos` DISABLE KEYS */;
+INSERT INTO `telefonos` VALUES (1,'11111',1),(2,'10345',2),(3,'08653',3),(4,'09453',4),(5,'98765',5),(6,'13456',6),(7,'54378',7),(8,'12345',8),(9,'78901',9),(10,'34567',10);
 /*!40000 ALTER TABLE `telefonos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +168,7 @@ CREATE TABLE `ventas` (
   PRIMARY KEY (`id`),
   KEY `fk_ventas_clientes1_idx` (`clientes_id`),
   CONSTRAINT `fk_ventas_clientes1` FOREIGN KEY (`clientes_id`) REFERENCES `clientes` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,6 +177,7 @@ CREATE TABLE `ventas` (
 
 LOCK TABLES `ventas` WRITE;
 /*!40000 ALTER TABLE `ventas` DISABLE KEYS */;
+INSERT INTO `ventas` VALUES (1,'2020-04-03',50000,10,0,50000,1),(2,'2020-06-04',55000,10,0,55000,2),(3,'2020-08-10',10000,10,0,10000,3),(4,'2021-09-10',15000,10,0,15000,4),(5,'2022-10-10',30000,10,0,30000,5),(6,'2022-10-10',40000,10,0,40000,6),(7,'2023-12-12',55500,10,0,55500,7),(8,'2023-12-12',90000,10,0,90000,8),(9,'2023-12-12',12000,10,0,12000,9),(10,'2024-12-12',35000,10,0,35000,10);
 /*!40000 ALTER TABLE `ventas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,6 +206,7 @@ CREATE TABLE `ventas_has_productos` (
 
 LOCK TABLES `ventas_has_productos` WRITE;
 /*!40000 ALTER TABLE `ventas_has_productos` DISABLE KEYS */;
+INSERT INTO `ventas_has_productos` VALUES (1,1,1),(2,2,2),(3,3,1),(4,4,1),(5,5,1),(6,6,1),(7,7,1),(8,8,1),(9,9,1),(10,10,1);
 /*!40000 ALTER TABLE `ventas_has_productos` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -215,4 +219,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-03-13 15:31:52
+-- Dump completed on 2023-03-26  1:11:17
